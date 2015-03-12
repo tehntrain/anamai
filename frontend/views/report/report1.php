@@ -1,6 +1,7 @@
 <?php
 
 use kartik\grid\GridView;
+use yii\helpers\Html;
 
 $this->params['breadcrumbs'][] = ['label' => 'รายงาน', 'url' => ['report/index']];
 $this->params['breadcrumbs'][] = 'รายงานนับถือศาสนา';
@@ -15,25 +16,30 @@ echo GridView::widget([
         ['class' => 'yii\grid\SerialColumn'],
         [
             'attribute' => 'hoscode',
-            'header' => 'รหัสสถานบริการ'
+            'header' => 'รหัสสถานบริการ',
         ],
         [
             'attribute' => 'hosname',
-            'header' => 'สถานบริการ'
+            'format' => 'raw',
+            'value' => function($model) {
+                $hoscode = $model['hoscode'];
+                $hosname = $model['hosname'];
+                return Html::a(Html::encode($hosname), ['report/report3','hoscode'=>$hoscode]);
+            }
         ],
-        [
-            'attribute' => 'total',
-            'header' => 'ประชากรทั้งหมด(คน)'
-        ],
-        [
-            'attribute' => 'buddha',
-            'header' => 'ศาสนาพุทธ (คน)'
-        ],
-        [
-            'attribute' => 'other',
-            'header' => 'อื่นๆ (คน)'
-        ],
-    ]
-]);
-?>
+                [
+                    'attribute' => 'total',
+                    'header' => 'ประชากรทั้งหมด(คน)'
+                ],
+                [
+                    'attribute' => 'buddha',
+                    'header' => 'ศาสนาพุทธ (คน)'
+                ],
+                [
+                    'attribute' => 'other',
+                    'header' => 'อื่นๆ (คน)'
+                ],
+            ]
+        ]);
+        ?>
 
