@@ -15,13 +15,13 @@ class ReportController extends \yii\web\Controller {
 h.hoscode,h.hosname
 ,(select COUNT(DISTINCT p.HOSPCODE,p.PID) from person p where p.HOSPCODE = h.hoscode
 	 AND p.typearea in (1,3)
- ) as 'ประชากรทั้งหมด'
+ ) as 'total'
 ,(select COUNT(DISTINCT p.HOSPCODE,p.PID) from person p where p.HOSPCODE = h.hoscode
    AND p.typearea in (1,3) AND p.RELIGION = 1
-  ) as 'นับถือศาสนาพุทธ'
+  ) as 'buddha'
 ,(select COUNT(DISTINCT p.HOSPCODE,p.PID) from person p where p.HOSPCODE = h.hoscode
    AND p.typearea in (1,3) AND p.RELIGION != 1
-  ) as 'นับถือศาสนาอื่นๆ'
+  ) as 'other'
  from chospital_amp h";
         //$rawData = \yii::$app->db->createCommand($sql)->queryAll();
         //print_r($rawData);
