@@ -2,10 +2,15 @@
 
 use kartik\grid\GridView;
 use yii\helpers\Html;
+use miloschuman\highcharts\Highcharts;
 
 $this->params['breadcrumbs'][] = ['label' => 'รายงาน', 'url' => ['report/index']];
 $this->params['breadcrumbs'][] = 'รายงานนับถือศาสนา';
+?>
 
+ <div id="chart" style="padding-bottom: 10px"></div>
+
+<?php
 echo GridView::widget([
     'dataProvider' => $dataProvider,
     'panel' => [
@@ -44,43 +49,41 @@ echo GridView::widget([
         ?>
 
         <?php
-
-        use miloschuman\highcharts\Highcharts;
-
-Highcharts::widget([
+        Highcharts::widget([
             'scripts' => [
                 'highcharts-more',
                 'themes/grid'
             ]
         ]);
         ?>
-        <div id="chart" style="padding-bottom: 10px"></div>
+       
         <?php
         $categ = [];
         for ($i = 0; $i < count($rawData); $i++) {
             $categ[] = $rawData[$i]['hosname'];
             //array_push($categ,'vvvv');
-        }     
+        }
         $js_categories = implode("','", $categ);
-        
-         $data = [];
+
+        $data = [];
         for ($i = 0; $i < count($rawData); $i++) {
             $data[] = $rawData[$i]['buddha'];
             //array_push($categ,'vvvv');
-        }     
+        }
         $js_data = implode(",", $data);
 
         $this->registerJs("
 $(function () {
     $('#chart').highcharts({
+         colors: ['#ED921C', '#1F7CDB'],
         chart: {
             type: 'column'
         },
         title: {
-            text: 'Monthly Average Rainfall'
+            text: 'รายงานประชากรในเขตพื้นที่รับผิดชอบที่นับถือศาสนาพุทธ'
         },
         subtitle: {
-            text: 'Source: WorldClimate.com'
+            text: 'ปีงบประมาณ 2558'
         },
         xAxis: {
             categories: ['$js_categories'],
