@@ -37,7 +37,8 @@ h.hoscode,h.hosname
             'pagination' => FALSE,
         ]);
         return $this->render('report1', [
-                    'dataProvider' => $dataProvider
+                    'dataProvider' => $dataProvider,
+                     'rawData'=>$rawData
         ]);
     }
     
@@ -55,7 +56,9 @@ h.hoscode,h.hosname
             'pagination' => FALSE,
         ]);
         return $this->render('report3', [
-                    'dataProvider' => $dataProvider
+                    'dataProvider' => $dataProvider,
+                    'sql'=>$sql,
+                   
         ]);
         
     }

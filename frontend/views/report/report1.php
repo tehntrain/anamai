@@ -24,9 +24,9 @@ echo GridView::widget([
             'value' => function($model) {
                 $hoscode = $model['hoscode'];
                 $hosname = $model['hosname'];
-                return Html::a(Html::encode($hosname), ['report/report3','hoscode'=>$hoscode]);
+                return Html::a(Html::encode($hosname), ['report/report3', 'hoscode' => $hoscode]);
             }
-        ],
+                ],
                 [
                     'attribute' => 'total',
                     'header' => 'ประชากรทั้งหมด(คน)'
@@ -41,5 +41,74 @@ echo GridView::widget([
                 ],
             ]
         ]);
+        ?>
+
+        <?php
+
+        use miloschuman\highcharts\Highcharts;
+
+Highcharts::widget([
+            'scripts' => [
+                'highcharts-more',
+                'themes/grid'
+            ]
+        ]);
+        ?>
+        <div id="chart" style="padding-bottom: 10px"></div>
+        <?php
+        $categ = [];
+        for ($i = 0; $i < count($rawData); $i++) {
+            $categ[] = $rawData[$i]['hosname'];
+            //array_push($categ,'vvvv');
+        }     
+        $js_categories = implode("','", $categ);
+        
+         $data = [];
+        for ($i = 0; $i < count($rawData); $i++) {
+            $data[] = $rawData[$i]['buddha'];
+            //array_push($categ,'vvvv');
+        }     
+        $js_data = implode(",", $data);
+
+        $this->registerJs("
+$(function () {
+    $('#chart').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monthly Average Rainfall'
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com'
+        },
+        xAxis: {
+            categories: ['$js_categories'],
+            //crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'คน'
+            }
+        },
+       
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'พุทธ',
+            data: [$js_data]
+
+        }]
+    });
+});
+
+
+");
+// จบ chart
         ?>
 

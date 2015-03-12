@@ -9,9 +9,13 @@ $this->params['breadcrumbs'][] = 'รายบุคคล';
 echo GridView::widget([
     'dataProvider' => $dataProvider,
     'panel' => [
-        'before' => 'รายงาน xxxx',
+        'before' => 'dd',
         'after' => 'ประมวลผล ณ ' . date('Y-m-d H:i:s')
     ],
 ]);
 ?>
+<div class="alert alert-danger">
+    <?=$sql?>
+    
+</div>
 

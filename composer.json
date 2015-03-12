@@ -20,7 +20,8 @@
         "yiisoft/yii2-swiftmailer": "*",
         "kartik-v/yii2-mpdf": "@dev",
         "kartik-v/yii2-grid": "@dev",
-        "kartik-v/yii2-krajee-base": "@dev"
+        "kartik-v/yii2-krajee-base": "@dev",
+        "miloschuman/yii2-highcharts-widget": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
