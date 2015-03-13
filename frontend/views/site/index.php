@@ -20,21 +20,7 @@ $this->registerJsFile('./js/chart_dial.js');
 ?>
 
 <div class="site-index well well-material">
-    <?php
-    $route1 = Yii::$app->urlManager->createUrl('test/test1');
-    ?>
-    <a href="<?= $route1 ?>">ไปที่ test1</a>
-    <br>
-
-    <?php
-    $route2 = Yii::$app->urlManager->createUrl(['test/test2', 'name' => 'utehn', 'lname' => 'JAD']);
-    ?>
-    <a href="<?= $route2 ?>">ไปที่ test2</a>
-    <br>
-
-    <?=
-    Html::a('ลิงค์แบบที่ 3', ['test/test1', 'a' => '1']);
-    ?>
+    <h3>Dash Board</h3>
 </div>
 <div class="row">
     <div class="col-sm-4" style="text-align: center;">
@@ -70,7 +56,7 @@ $this->registerJsFile('./js/chart_dial.js');
                         gen_dial(obj_div,$base,$persent);
                     ");
         ?>
-       <h4>หญิงมีครรภ์ได้รับการฝากครรภ์ครั้งแรก<br>ก่อน 12 สัปดาห์</h4>
+         <h4>หญิงมีครรภ์ได้รับการตรวจสุขภาพช่องปาก<br> สำนักทันตะ</h4>
         <div id="ch2"></div>
         
     </div>
@@ -90,7 +76,7 @@ $this->registerJsFile('./js/chart_dial.js');
                         gen_dial(obj_div,$base,$persent);
                     ");
         ?>
-       <h4>หญิงมีครรภ์ได้รับการฝากครรภ์ครั้งแรก<br>ก่อน 12 สัปดาห์</h4>
+       <h4>หญิงตั้งค์ครรภ์ได้รับการฝากครรภ์<br>5 ครั้ง</h4>
         <div id="ch3"></div>
     </div>
 </div>
