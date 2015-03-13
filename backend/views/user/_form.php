@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use backend\models\UserRole;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\User */
@@ -14,15 +16,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'auth_key')->textInput(['maxlength' => 32]) ?>
-
-    <?= $form->field($model, 'password_hash')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'password_reset_token')->textInput(['maxlength' => 255]) ?>
+    
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'role')->textInput() ?>
+   
+    
+     <?=
+    $form->field($model, 'role')->dropDownList(
+            ArrayHelper::map(UserRole::find()->all(), 'role_id', 'role_desc')
+    );
+    ?>
 
     <?= $form->field($model, 'status')->textInput() ?>
 
