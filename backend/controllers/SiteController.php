@@ -17,6 +17,7 @@ class SiteController extends Controller {
      * @inheritdoc
      */
     public function behaviors() {
+        
         $role = isset(Yii::$app->user->identity->role) ? Yii::$app->user->identity->role : 99;
         $arr = array();
         if ($role == 1) {

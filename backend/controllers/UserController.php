@@ -14,17 +14,45 @@ use yii\filters\VerbFilter;
  */
 class UserController extends Controller
 {
-    public function behaviors()
-    {
+    
+    public function behaviors() {
+        
+        $role = isset(Yii::$app->user->identity->role) ? Yii::$app->user->identity->role : 99;
+        $arr = array();
+        if ($role == 1) {
+            $arr = ['create', 'update', 'index', 'delete','view'];
+        } else {
+            $arr = ['index','view'];
+        }
         return [
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'denyCallback' => function ($rule, $action) {
+                    throw new \yii\web\ForbiddenHttpException("ไม่ได้รับอนุญาต");
+                },
+                'only' => ['login', 'logout', 'index', 'error'],
+                'rules' => [
+                    [
+                        'allow' => TRUE,
+                        'actions' => $arr,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => TRUE,
+                        'actions' => $arr,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];
     }
+
 
     /**
      * Lists all User models.
