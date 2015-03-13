@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return 'ไม่ทราบสิทธิ'; //
                     }
                 },
-                'filter' => \yii\helpers\ArrayHelper::map(backend\models\UserRole::find()->all(), 'role_name', 'role_name'),
+                'filter' => \yii\helpers\ArrayHelper::map(backend\models\UserRole::find()->all(), 'role_id', 'role_desc'),
             ],
             // 'status',
             // 'created_at',
