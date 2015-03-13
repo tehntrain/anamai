@@ -19,6 +19,10 @@ class UserRole extends \yii\db\ActiveRecord
     {
         return 'sys_user_role';
     }
+    
+     public function getRole_desc(){
+        return $this->role_id."-".$this->role_name;
+    }
 
     /**
      * @inheritdoc
