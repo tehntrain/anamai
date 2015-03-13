@@ -14,7 +14,7 @@ $this->title = 'System Management';
             </div>
 
             <div class="col-sm-4">
-                <a href="" class="btn btn-success">ประมวลผลรายงาน</a>
+                <button class="btn btn-success" id="btn_rpt">ประมวลผลรายงาน</button>
             </div>
 
         </div>
