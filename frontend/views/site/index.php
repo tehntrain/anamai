@@ -11,7 +11,7 @@ $this->title = 'กรมอนามัย';
 Highcharts::widget([
     'scripts' => [
         'highcharts-more',
-        'themes/grid'
+       'themes/grid'
     //'modules/exporting',
     ]
 ]);

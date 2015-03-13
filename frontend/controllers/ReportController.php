@@ -11,18 +11,7 @@ class ReportController extends \yii\web\Controller {
     }
 
     public function actionReport1() {
-        $sql = "SELECT 
-h.hoscode,h.hosname
-,(select COUNT(DISTINCT p.HOSPCODE,p.PID) from person p where p.HOSPCODE = h.hoscode
-	 AND p.typearea in (1,3)
- ) as 'total'
-,(select COUNT(DISTINCT p.HOSPCODE,p.PID) from person p where p.HOSPCODE = h.hoscode
-   AND p.typearea in (1,3) AND p.RELIGION = 1
-  ) as 'buddha'
-,(select COUNT(DISTINCT p.HOSPCODE,p.PID) from person p where p.HOSPCODE = h.hoscode
-   AND p.typearea in (1,3) AND p.RELIGION != 1
-  ) as 'other'
- from chospital_amp h";
+        $sql = "select * from am_rpt1";
         //$rawData = \yii::$app->db->createCommand($sql)->queryAll();
         //print_r($rawData);
 
