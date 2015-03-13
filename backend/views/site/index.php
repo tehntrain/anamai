@@ -23,7 +23,7 @@ $this->title = 'System Management';
     </div>
 
     <?php
-    $route = yii::$app->urlManager->createUrl('processreport/exec');
+    $route_exec = yii::$app->urlManager->createUrl('processreport/exec');
     
     $script1 = <<< JS
             
@@ -31,7 +31,7 @@ $this->title = 'System Management';
     
     $('#show').html('กำลังประมวลผล...');          
     $.ajax({
-       url: "$route_file_count",       
+       url: "$route_exec",       
        success: function(data) {
              $('#show').html('');                
             alert(data+' สำเร็จ');            
