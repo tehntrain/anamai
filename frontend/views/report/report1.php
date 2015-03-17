@@ -77,7 +77,7 @@ echo GridView::widget([
         $js_data = implode(",", $buddha);
 
         $this->registerJs("
-$(function () {
+
     $('#chart').highcharts({
          colors: ['#ED921C', '#1F7CDB'],
         chart: {
@@ -112,7 +112,7 @@ $(function () {
 
         }]
     });
-});
+
 
 
 ");
