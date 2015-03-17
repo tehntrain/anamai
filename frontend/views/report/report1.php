@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = ['label' => 'รายงาน', 'url' => ['re
 $this->params['breadcrumbs'][] = 'รายงานนับถือศาสนา';
 ?>
 
- <div id="chart" style="padding-bottom: 10px"></div>
+<div id="chart" style="padding-bottom: 10px"></div>
 
 <?php
 echo GridView::widget([
@@ -56,21 +56,25 @@ echo GridView::widget([
             ]
         ]);
         ?>
-       
+
         <?php
-        $categ = [];
+        $hosname = [];
         for ($i = 0; $i < count($rawData); $i++) {
             $categ[] = $rawData[$i]['hosname'];
             //array_push($categ,'vvvv');
         }
-        $js_categories = implode("','", $categ);
 
-        $data = [];
+        $hosname = array_column($rawData, 'hosname');
+        $js_categories = implode("','", $hosname);
+
+        $buddha = [];
         for ($i = 0; $i < count($rawData); $i++) {
-            $data[] = $rawData[$i]['buddha'];
+            $buddha[] = $rawData[$i]['buddha'];
             //array_push($categ,'vvvv');
         }
-        $js_data = implode(",", $data);
+
+        $buddha = array_column($rawData, 'buddha');
+        $js_data = implode(",", $buddha);
 
         $this->registerJs("
 $(function () {
